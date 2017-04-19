@@ -1,0 +1,59 @@
+@import url(semantic.min.css);
+@import url(datepicker/pikaday.css);
+
+body{
+	padding: 0;
+}
+
+.content{
+	padding: 0em 5em;
+}
+
+.main{
+	padding: 3em 12em;
+}
+
+#login .title{
+	padding: 20px 0;
+}
+
+#hotel .banner{
+	width: 100%;
+	height: 360px;
+	margin-top: 5em;
+	padding-top: 20px;
+	background: url(../img/hotel/hotel-1.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+
+#search-hotel{
+	width: 590px;
+	height: 300px;
+	margin-left: 100px;
+	overflow: hidden;
+}
+#hotel .recommend,#local .recommend{
+	margin-top: 20px;
+}
+#hotel .price,#local .price{
+	color: #f55;
+	font-size: 20px;
+}
+#hotel .font-blue{
+	color: #0084bb;
+}
+
+#local .banner{
+	width: 100%;
+	height: 360px;
+	margin-top: 5em;
+	padding-top: 20px;
+	background: url(../img/local/banner.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+#strategy .mar{
+	margin-top:70px;
+}
+#strategy .article-title{
+	font-size: 20px;
+}

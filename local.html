@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>溜达网</title>
+	<link rel="stylesheet" href="css/main.css">
+</head>
+<body id="local">
+	<div class="ui fixed menu">
+		<a href="index.html" class="green item">
+			<i class="home icon"></i> 首页
+		</a>
+		<a href="hotel.html" class="red item">
+			<i class="building icon"></i> 酒店
+		</a>
+		<a href="local.html" class="active blue item">
+			<i class="male icon"></i> 当地人
+		</a>
+		<a href="strategy.html" class="purple item">
+			<i class="book icon"></i> 攻略
+		</a>
+		<div class="right menu">
+			<div class="ui item label">
+			  name
+			  <a class="detail"><i class="mail icon"></i> 23</a>
+			</div>
+			<div class="item">
+				<div class="ui primary button">注册</div>
+			</div>
+			<div class="item">
+				<div class="ui button">登陆</div>
+			</div>
+	    </div>
+	</div>
+
+	<div class="banner">
+		<div class="ui form segment" id="search-hotel">
+			<h1 class="ui header">当地向导			<span class="description" style="font-size: 12px; color: #0084bb; margin-left: 20px;">
+					    正规持证中文向导，当地人带你玩，绝对不会被坑。
+			 </span>	</h1>
+
+
+			
+			<div class="ui section divider"></div>
+
+			<div class="field">
+				<label>地点搜索</label>
+			    <div class="ui local search">
+					<div class="ui left icon input">
+			 		 <i class="world icon"></i>
+			  		<input class="prompt" type="text" placeholder="目的地" autocomplete="off">
+				</div>
+					<div class="results"></div>
+			    </div>
+			</div>
+			<div class="two fields">
+				<div class="field">
+				  <label>入住时间</label>
+				  <div class="ui category search">
+				<div class="ui left icon input">
+				  <i class="wait icon"></i>
+				  <input class="prompt" type="text" placeholder="入住时间" autocomplete="off" id="indatepicker">
+				</div>
+				<div class="results"></div>
+				  </div>
+				</div>
+				<div class="field">
+				    <label>离店时间</label>
+				    <div class="ui local search">
+						<div class="ui left icon input">
+				 		 <i class="wait icon"></i>
+				 		 <input class="prompt" type="text" placeholder="离店时间" autocomplete="off" id="outdatepicker">
+					</div>
+						<div class="results"></div>
+					</div>
+				</div>
+			</div>
+				<div class="ui primary button" id="search-btn">
+				           搜索       
+				</div>
+			</div>
+	</div>
+
+	<div class="content segment">
+		<div class="container recommend">
+				<h2 class="ui header">查询导游结果</h2>
+				<div class="ui menu">
+ 					<a class="item">
+					默认排序
+				 	</a>
+				 	<a class="item">
+						价格
+						<i class="sort icon"></i>
+				 	</a>
+				 	<a class="item">
+						销量
+						<i class="arrow down icon"></i>
+				 	</a>
+			 		<a class="icon item ">
+				    	<i class="left arrow icon"></i>
+					</a>
+				 	<a class="icon item">
+					    <i class="right arrow icon"></i>
+					</a>
+					<a class="item">4/8</a>
+				</div>
+ 				<div class="ui cards">
+ 					<div class="ui card">
+					  	<div class="image dimmable">
+							<img src="img/local/local-person-1.jpg">
+					  	</div>
+						<div class="content">
+							<div class="header">朵朵</div>
+							<div class="meta">
+								<i class="marker icon"></i>
+						 		<a class="group">北京</a>
+							</div>
+							<div class="description">设有格式房间，干净卫生，通风透光，简约设计风格。</div>
+					 	</div>
+					  	<div class="extra content">
+							<a class="right floated created price">￥200起</a>
+							<a class="friends price">
+					 		 已售356</a>
+					 	</div>
+					</div>
+ 					<div class="ui card">
+					  	<div class="image dimmable">
+							<img src="img/local/local-person-2.jpg">
+					  	</div>
+						<div class="content">
+							<div class="header">沙耶香</div>
+							<div class="meta">
+								<i class="marker icon"></i>
+						 		<a class="group">北京</a>
+							</div>
+							<div class="description">设有格式房间，干净卫生，通风透光，简约设计风格。</div>
+					 	</div>
+					  	<div class="extra content">
+							<a class="right floated created price">￥200起</a>
+							<a class="friends price">
+					 		 已售356</a>
+					 	</div>
+					</div>
+					<div class="ui card">
+					  	<div class="image dimmable">
+							<img src="img/local/local-person-3.jpg">
+					  	</div>
+						<div class="content">
+							<div class="header">加听</div>
+							<div class="meta">
+								<i class="marker icon"></i>
+						 		<a class="group">北京</a>
+							</div>
+							<div class="description">定制你的自由行</div>
+					 	</div>
+					  	<div class="extra content">
+							<a class="right floated created price">￥200起</a>
+							<a class="friends price">
+					 		 已售356</a>
+					 	</div>
+					</div>
+					<div class="ui card">
+					  	<div class="image dimmable">
+							<img src="img/local/local-person-1.jpg">
+					  	</div>
+						<div class="content">
+							<div class="header">朵朵</div>
+							<div class="meta">
+								<i class="marker icon"></i>
+						 		<a class="group">北京</a>
+							</div>
+							<div class="description">设有格式房间，干净卫生，通风透光，简约设计风格。</div>
+					 	</div>
+					  	<div class="extra content">
+							<a class="right floated created price">￥200起</a>
+							<a class="friends price">
+					 		 已售356</a>
+					 	</div>
+					</div>
+					<div class="ui card">
+					  	<div class="image dimmable">
+							<img src="img/local/local-person-2.jpg">
+					  	</div>
+						<div class="content">
+							<div class="header">汉庭酒店</div>
+							<div class="meta">
+								<i class="marker icon"></i>
+						 		<a class="group">北京</a>
+							</div>
+							<div class="description">设有格式房间，干净卫生，通风透光，简约设计风格。</div>
+					 	</div>
+					  	<div class="extra content">
+							<a class="right floated created price">￥200起</a>
+							<a class="friends price">
+					 		 已售356</a>
+					 	</div>
+					</div>
+					<div class="ui card">
+					  	<div class="image dimmable">
+							<img src="img/local/local-person-3.jpg">
+					  	</div>
+						<div class="content">
+							<div class="header">汉庭酒店</div>
+							<div class="meta">
+								<i class="marker icon"></i>
+						 		<a class="group">北京</a>
+							</div>
+							<div class="description">设有格式房间，干净卫生，通风透光，简约设计风格。</div>
+					 	</div>
+					  	<div class="extra content">
+							<a class="right floated created price">￥200起</a>
+							<a class="friends price">
+					 		已售356</a>
+					 	</div>
+					</div>
+					<div class="ui card">
+					  	<div class="image dimmable">
+							<img src="img/local/local-person-3.jpg">
+					  	</div>
+						<div class="content">
+							<div class="header">汉庭酒店</div>
+							<div class="meta">
+								<i class="marker icon"></i>
+						 		<a class="group">北京</a>
+							</div>
+							<div class="description">设有格式房间，干净卫生，通风透光，简约设计风格。</div>
+					 	</div>
+					  	<div class="extra content">
+							<a class="right floated created price">￥200起</a>
+							<a class="friends price">
+					 		 已售356</a>
+					 	</div>
+					</div>
+					<div class="ui card">
+					  	<div class="image dimmable">
+							<img src="img/local/local-person-3.jpg">
+					  	</div>
+						<div class="content">
+							<div class="header">汉庭酒店</div>
+							<div class="meta">
+								<i class="marker icon"></i>
+						 		<a class="group">北京</a>
+							</div>
+							<div class="description">设有格式房间，干净卫生，通风透光，简约设计风格。</div>
+					 	</div>
+					  	<div class="extra content">
+							<a class="right floated created price">￥200起</a>
+							<a class="friends price">
+					 		 已售356</a>
+					 	</div>
+					</div>
+ 				</div>
+				<div class="ui pagination menu">
+				  <a class="icon item">
+				    <i class="left arrow icon"></i>
+				  </a>
+				  <a class="active item">
+				    1
+				  </a>
+				  <div class="disabled item">
+				    ...
+				  </div>
+				  <a class="item">
+				    10
+				  </a>
+				  <a class="item">
+				    11
+				  </a>
+				  <a class="item">
+				    12
+				  </a>
+				  <a class="icon item">
+				    <i class="right arrow icon"></i>
+				  </a>
+				</div>
+	</div>
+	<script src="js/jquery-1.9.1.min.js"></script>
+	<script src="js/semantic.min.js"></script>
+	<script src="js/pikaday.js"></script>
+	<script>
+	$(function(){
+		var inDatePicker = new Pikaday(
+	    {
+	        field: document.getElementById('indatepicker'),
+	        firstDay: 1,
+	        minDate: new Date(),
+	        maxDate: new Date('2020-12-31'),
+	        yearRange: [2000, 2020],
+	        onSelect: function(){
+	        	outDatePicker.setMinDate(new Date(inDatePicker.toString()));
+	        }
+	    });
+
+		var outDatePicker = new Pikaday(
+	    {
+	        field: document.getElementById('outdatepicker'),
+	        firstDay: 1,
+	        minDate: new Date(),
+	        maxDate: new Date('2020-12-31'),
+	        yearRange: [2000, 2020],
+	         onSelect: function(){
+	        	inDatePicker.setMaxDate(new Date(outDatePicker.toString()));
+	        }
+	    });
+
+		$('#search-btn').on('click',function(){
+			console.log(outDatePicker.toString());
+		});
+
+		console.log($('.ui.rating'));
+		$('.ui.rating').rating();
+		$('.ui.rating').rating({
+		    clearable: false,
+		    interactive: false
+		});
+	});
+	
+	</script>
+</body>
+</html>
