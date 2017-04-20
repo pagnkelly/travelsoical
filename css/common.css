@@ -28,11 +28,7 @@ body{
 	background: #7ecef4;
 	padding-bottom: 80px;
 }
-#index .clearfix:before,.clearfix:after{
-	content: '';
-	display: block;
-	clear: both;
-}
+
 /***********header**************/
 
 header{

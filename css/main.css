@@ -5,6 +5,12 @@ body{
 	padding: 0;
 }
 
+.clearfix:before,.clearfix:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+
 .content{
 	padding: 0em 5em;
 }
@@ -32,10 +38,10 @@ body{
 	margin-left: 100px;
 	overflow: hidden;
 }
-#hotel .recommend,#local .recommend{
+#hotel .recommend,#hotel-detail .recommend,#local .recommend{
 	margin-top: 20px;
 }
-#hotel .price,#local .price{
+#hotel .price,#local .price,#hotel-detail .price{
 	color: #f55;
 	font-size: 20px;
 }
@@ -51,9 +57,46 @@ body{
 	background: url(../img/local/banner.jpg) no-repeat;
 	background-size: 100% 100%;
 }
-#strategy .mar{
+.mar{
 	margin-top:70px;
+}
+.pad{
+	padding: 0 10em;
 }
 #strategy .article-title{
 	font-size: 20px;
+}
+
+#hotel-detail .detail-info .detail-pic{
+	float: left;
+	width: 720px;
+	padding: 14px;
+}
+#hotel-detail .detail-info .detail-des{
+	float: left;
+	width: 320px;
+	padding: 14px;
+}
+#hotel-detail .pics .pic{
+	width: 320px;
+	float: left;
+}
+
+#hotel-detail .fd{
+	float: left; 
+	margin-left:10px;
+	font-size: 18px;
+	color: #0084bb;
+}
+
+#hotel-detail .detail-title{
+	width: 64px;
+	float: left; 
+	margin-right:30px;
+	font-size: 16px;
+}
+#hotel-detail .detail-con{
+	width: 900px;
+	float: left; 
+	font-size: 16px;
 }
