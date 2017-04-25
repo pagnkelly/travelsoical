@@ -38,6 +38,7 @@ body{
 	margin-left: 100px;
 	overflow: hidden;
 }
+
 #hotel .recommend,#hotel-detail .recommend,#local .recommend{
 	margin-top: 20px;
 }
@@ -66,7 +67,11 @@ body{
 #strategy .article-title{
 	font-size: 20px;
 }
-
+#strategy .user-focus{
+	position: absolute;
+	left: 0;
+	top: 50px;
+}
 #hotel-detail .detail-info .detail-pic{
 	float: left;
 	width: 720px;
@@ -88,7 +93,15 @@ body{
 	font-size: 18px;
 	color: #0084bb;
 }
-
+#hotel-detail .total-price{
+	text-align: right;
+	font-size: 20px;
+	padding: 10px 20px;
+}
+#hotel-detail .total-price span{
+	color: orange;
+	font-size: 25px;
+}
 #hotel-detail .detail-title{
 	width: 64px;
 	float: left; 
@@ -99,4 +112,75 @@ body{
 	width: 900px;
 	float: left; 
 	font-size: 16px;
+}
+#local-detail .price{
+	font-size:40px;
+	line-height: 90px;
+	color: orange;
+	height: 90px;
+}
+
+#personal .hidden{
+	display: none;
+}
+#personal .item-header{
+	height: 20px;
+	background: #555;
+	width: 100%;
+}
+#personal .order-item{
+	padding: 10px;
+}
+#personal .order-item .item-header{
+	color: #fff;
+	text-indent: 10px;
+}
+#personal .order-item .item-content{
+	padding:5px;
+}
+#personal .hotel-img{
+	float: left;
+	width: 150px;
+	height: 100px;
+	overflow: hidden;
+}
+
+#personal .order-des{
+	float: left;
+	margin-left: 10px;
+	width: 250px;
+}
+#personal .order-des .header{
+	margin: 20px 0;
+	font-size: 18px;
+	color: #1e70bf
+}
+
+#personal .order-des .time{
+	color: #3ac0ff;
+}
+
+#personal .acount-price{
+	float: left;
+	color: #f55;
+	width: 100px;
+	line-height: 88px;
+	text-align: center;
+	font-size: 25px;
+}
+
+#personal .operation{
+	float: left;
+	width: 200px;
+	height: 100px;
+	display: flex;
+	justify-content: center;
+  	align-items: center;
+}
+
+#personal .circle-photo{
+	height: 100px;
+	width: 100px;
+	border-radius: 50% 50%;
+	overflow: hidden;
 }

@@ -103,7 +103,7 @@
 			      <td>无早餐</td>
 			      <td><div class="price">￥245</div></td>
 			      <td>
-					<div class="ui button primary">订购</div>
+					<div class="ui button primary order-item">订购</div>
 			      </td>
 			    </tr>
 			     <tr>
@@ -123,7 +123,7 @@
 			      <td>无早餐</td>
 			      <td><div class="price">￥245</div></td>
 			      <td>
-					<div class="ui button primary">订购</div>
+					<div class="ui button primary order-item">订购</div>
 			      </td>
 			    </tr>
 			     <tr>
@@ -143,7 +143,7 @@
 			      <td>无早餐</td>
 			      <td><div class="price">￥245</div></td>
 			      <td>
-					<div class="ui button primary">订购</div>
+					<div class="ui button primary order-item">订购</div>
 			      </td>
 			    </tr>
 			     <tr>
@@ -163,7 +163,7 @@
 			      <td>无早餐</td>
 			      <td><div class="price">￥245</div></td>
 			      <td>
-					<div class="ui button primary">订购</div>
+					<div class="ui button primary order-item">订购</div>
 			      </td>
 			    </tr>
 			  </tbody>
@@ -378,11 +378,92 @@
 			</div>
 		</div>
 	</div>
+
+
+
+	<div class="ui modal">
+	  	<i class="close icon"></i>
+		<div class="header">
+		   订单详情
+		</div>
+	  	<div class="content clearfix">
+	  		
+			<div class="description" style="float:right;">
+				<div class="two fields">
+					<div class="field">
+					  <label>入住时间</label>
+					  <div class="ui category search">
+					<div class="ui left icon input">
+					  <i class="wait icon"></i>
+					  <input class="prompt" type="text" placeholder="入住时间" autocomplete="off" id="indatepicker">
+					</div>
+					<div class="results"></div>
+					  </div>
+					</div>
+					<div class="field">
+					    <label>离店时间</label>
+					    <div class="ui local search">
+							<div class="ui left icon input">
+					 		 <i class="wait icon"></i>
+					 		 <input class="prompt" type="text" placeholder="离店时间" autocomplete="off" id="outdatepicker">
+						</div>
+							<div class="results"></div>
+						</div>
+					</div>
+				</div>
+		    </div>
+		    <div class="image" style="float:left">
+		     	<img src="img/hotel/hotel-tuijian-1.jpg" alt="" class="ui small image" id="photo">
+		    </div>
+	   		<div class="fd">
+	  			<p>房型： 单人标准间 </p>
+	  			<p>单价：￥245</p>
+	  		</div>
+		</div>
+		<div class="ui section divider"></div>
+		<div class="total-price">
+			总价：<span>￥2232</span>
+		</div>
+	  	<div class="actions">
+		    <div class="ui button" id="order-cancel">取消</div>
+		    <div class="ui button">确定</div>
+	  	</div>
+	</div>
 	<script src="js/jquery-1.9.1.min.js"></script>
 	<script src="js/semantic.min.js"></script>
+	<script src="js/pikaday.js"></script>
 	<script>
 	$(function(){
-		
+		var inDatePicker = new Pikaday(
+	    {
+	        field: document.getElementById('indatepicker'),
+	        firstDay: 1,
+	        minDate: new Date(),
+	        maxDate: new Date('2020-12-31'),
+	        yearRange: [2000, 2020],
+	        onSelect: function(){
+	        	outDatePicker.setMinDate(new Date(inDatePicker.toString()));
+	        }
+	    });
+
+		var outDatePicker = new Pikaday(
+	    {
+	        field: document.getElementById('outdatepicker'),
+	        firstDay: 1,
+	        minDate: new Date(),
+	        maxDate: new Date('2020-12-31'),
+	        yearRange: [2000, 2020],
+	         onSelect: function(){
+	        	inDatePicker.setMaxDate(new Date(outDatePicker.toString()));
+	        }
+	    });
+		$('.order-item').on('click',function(){
+				$('.ui.modal').modal('show');
+		});
+			
+		$('#order-cancel').on('click',function(){
+			$('.ui.modal').modal('hide');
+		});
 
 	
 		
