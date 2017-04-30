@@ -38,7 +38,9 @@ body{
 	margin-left: 100px;
 	overflow: hidden;
 }
-
+#hotel .level,#hotel-detail .level{
+	font-size:12px;margin-left:10px;color:red;
+}
 #hotel .recommend,#hotel-detail .recommend,#local .recommend{
 	margin-top: 20px;
 }
@@ -183,4 +185,20 @@ body{
 	width: 100px;
 	border-radius: 50% 50%;
 	overflow: hidden;
+}
+
+#strategy-detail .strategy-header{
+	width: 110px;
+	margin: 0 auto;
+}
+
+#personal-detail .personal-header{
+	width: 110px;
+	margin: 0 auto;
+}
+
+#strategy-detail .afanda img{
+	border-radius: 50% 50%;
+	width: 28px;
+	height: 28px;
 }

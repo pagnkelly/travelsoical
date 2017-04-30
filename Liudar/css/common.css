@@ -1,0 +1,137 @@
+/************reset*******************/
+*{
+	margin: 0;
+	padding: 0;
+}
+*,:after,:before{
+	box-sizing : content-box;
+}
+ul{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+img{
+	border: 0;
+}
+body{
+	font-family: -apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;
+}
+#index .container{
+		width: 982px;
+		margin:  0 auto ;
+}
+#index .bg-color{
+	width: 100%;
+	z-index: -999;
+	background: #7ecef4;
+	padding-bottom: 80px;
+}
+
+/***********header**************/
+
+header{
+	height: 29px;
+	line-height: 29px;
+	border-bottom: 1px solid #f0f0f0; 
+
+}
+header a{
+	color: #777777;
+	font-size: 12px;
+}
+#index .logo{
+	width: 135px;
+	height: 29px;
+	float: left;
+	margin-right: 15px;
+	background: url(../img/index/logo.png);
+}
+#index .nav li{
+	float: left;
+	margin-right: 15px;
+}
+#index .login{
+	float: right;
+}
+#index .login li{
+	float: left;
+}
+#index .login li a{
+	height: 12px;
+	padding: 0 10px;
+	border-left: 1px solid #000;
+}
+#index .login li:first-child a{
+	border-left: 0;
+}
+#index .login li:nth-child(2) a{
+	border-left: 0;
+}
+/*************footer*****************/
+footer{
+	background: #fff;
+}
+p.title {
+	height: 50px;
+	line-height: 50px;
+	font-size: 12px;
+	color: #898989;
+	text-align: center;
+}
+#index .for-banner{
+	width: 478px;
+	height: 51px;
+	margin-right: 21px;
+	margin-bottom: 20px;
+	background: #ebebeb;
+	float: left;
+	text-align: center;
+	line-height: 51px;
+	font-size: 14px;
+}
+#index .for-banner.right{
+	margin-right: 0;
+}
+#index .footer-bird{
+	padding: 0 17px ;
+	font-size: 13px;
+	color: #777777;
+}
+#index .footer-bird a{
+	color: #777777;
+}
+#index .footer-bird a:hover{
+	color: #ff6600;
+}
+#index .footer-icon{
+	height: 114px;
+}
+#index .footer-icon .lite{
+	width: 427px;
+	margin:0 auto;
+}
+#index .footer-icon .beian{
+	float: left;
+	width: 126px;
+	height: 52px;
+	background: url(../img/index/sprite.png) 0 -145px;
+	margin-right: 12px;
+	margin-top: 15px;
+}
+#index .footer-icon .xin{
+	float: left;
+	width: 149px;
+	height: 52px;
+	background: url(../img/index/sprite.png) -137px -145px;
+	margin-right: 12px;
+	margin-top: 15px;
+}
+#index .footer-icon .yatai{
+	float: left;
+	width: 126px;
+	height: 52px;
+	background: url(../img/index/sprite.png) -298px -145px;
+	margin-top: 15px;
+}
