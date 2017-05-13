@@ -19,7 +19,7 @@
 					  	<div class="ui category search">
 							<div class="ui left icon input">
 								<i class="search icon"></i>
-								<input class="prompt" type="text" placeholder="酒店名称" autocomplete="off">
+								<input class="prompt hotel-name" type="text" placeholder="酒店名称" autocomplete="off">
 							</div>
 						<div class="results"></div>
 				  		</div>
@@ -29,7 +29,7 @@
 				    	<div class="ui local search">
 							<div class="ui left icon input">
 				 		 		<i class="world icon"></i>
-				  				<input class="prompt" type="text" placeholder="目的地" autocomplete="off">
+				  				<input class="prompt city-name" type="text" placeholder="目的地" autocomplete="off">
 							</div>
 						<div class="results"></div>
 				    </div>
@@ -70,7 +70,7 @@
 				<h2 class="ui header">每日酒店推荐</h2>
 			<?php foreach($push as $pushItem){
 			?>
-				<div class="ui card">
+				<div class="ui card hotel" data-id=<?php echo $pushItem -> hotel_id?> style="cursor:pointer;">
 				  	<div class="image dimmable">
 						<img src=<?php echo $pushItem-> img; ?>>
 				  	</div>
@@ -183,7 +183,11 @@
 	    });
 
 		$('#search-btn').on('click',function(){
-			loadData();
+			var data = {
+				hotel_name : $('.hotel-name').val(),
+				city_name: $('.city-name').val()
+			}
+			loadData('hotel/search',data);
 		});
 
 		$('.ui.rating').rating();
@@ -192,9 +196,10 @@
 		    interactive: false
 		});
 		var cur_page = 1;
-		function loadData(url){
+		function loadData(url,reqdata){
 
-			$.get(url+'?page=1', function (res) {
+			$.get(url,$.extend({page:1},reqdata), function (res) {
+				console.log(res);
 	           	$('#tmpl-container').html('');
 	           	for(var i=0;i<res.hotels.length;i++){
 	           		var hotel = res.hotels[i];
@@ -202,6 +207,7 @@
 	           	}
 				var total_page = Math.ceil(res.total_rows/9);
 				$('.page_detail').html((cur_page)+'/'+total_page);
+				$('#page').html('');
            		$('#page').append('<a class="icon item prev"><i class="left arrow icon"></i></a>');
            		for(var j=1;j<=total_page;j++){
            			$('#page').append('<a class="item page '+(j==1?'active':'')+'">'+j+'</a>');
@@ -215,7 +221,7 @@
 	           			$this.addClass('active');
 	           			cur_page = index+1;
 	           			$('.page_detail').html((cur_page)+'/'+total_page);
-	           			$.get(url+'?page='+(index+1),function(res){
+	           			$.get(url,$.extend({page:cur_page},reqdata),function(res){
            					$('#tmpl-container').html('');
            					for(var i=0;i<res.hotels.length;i++){
 			           		var hotel = res.hotels[i];
@@ -240,11 +246,17 @@
 	           		$('.page_detail').html((cur_page+1)+'/'+total_page);
 	           		$('#page .page').eq(cur_page).trigger('click');
 	           	})
-	        },'json');
+	        });
 		}
 
 		loadData('hotel/getAll');
 
+		$('.hotel').each(function(){
+			var $this = $(this);
+			$this.on('click',function(){
+				location.href = 'hotel/detail?id='+$this.data('id');
+			});
+		});
 			
 
 		

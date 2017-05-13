@@ -10,6 +10,13 @@ class Hotel_model extends CI_Model {
       return $this -> db -> get() -> result();
     }
 
+    public function getType($id) {
+      $this -> db -> select('*');
+      $this -> db -> from('t_hotel_type');
+      $this -> db -> where('hotel_id',$id);
+      return $this -> db -> get() -> result();
+    }
+
     public function getCount(){
         return $this->db->count_all('t_hotel');
     }
@@ -21,6 +28,11 @@ class Hotel_model extends CI_Model {
       return $this -> db -> get() -> result();
     }
     
+    public function getDetail($id) {
+      return $this -> db -> get_where('t_hotel', array(
+          'hotel_id' => $id
+         )) -> row();
+    }
 }
 
 

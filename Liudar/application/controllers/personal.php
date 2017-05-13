@@ -5,6 +5,8 @@ class Personal extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this -> load -> model('user_model');
+		$this -> load -> model('order_model');
+		$this -> load -> model('strategy_model');
 	}
 
 
@@ -71,5 +73,85 @@ class Personal extends CI_Controller {
             }
         }
 	}
+
+	public function orderList() {
+		$user_id = $this -> input -> get('id');
+		$page = $this -> input -> get('page');
+        $offset = ($page -1)*5;
+
+    	$total_rows = $this -> order_model -> getHotelOrderCount($user_id);
+		$result = $this -> order_model -> getHotelOrderList(5, $offset,$user_id);
+
+        $data = array(
+            'data' => $result,
+            'total_rows' => $total_rows
+        );
+
+		echo json_encode($data);
+	}
+
+	public function localOrderList(){
+		$user_id = $this -> input -> get('id');
+		$page = $this -> input -> get('page');
+        $offset = ($page -1)*5;
+
+    	$total_rows = $this -> order_model -> getLocalOrderCount($user_id);
+		$result = $this -> order_model -> getLocalOrderList(5, $offset,$user_id);
+
+        $data = array(
+            'data' => $result,
+            'total_rows' => $total_rows
+        );
+
+		echo json_encode($data);
+	}
+	public function strategyList() {
+		$user_id = $this -> input -> get('id');
+		$page = $this -> input -> get('page');
+        $offset = ($page -1)*5;
+
+        $total_rows = $this -> strategy_model -> getStrategyCount($user_id);
+		$result = $this -> strategy_model -> getStrategyList(5, $offset,$user_id);
+
+        $data = array(
+            'data' => $result,
+            'total_rows' => $total_rows
+        );
+
+		echo json_encode($data);
+	}
+
+	public function careList() {
+		$user_id = $this -> input -> get('id');
+		$page = $this -> input -> get('page');
+        $offset = ($page -1)*5;
+        $total_rows = $this -> user_model -> getCareCount($user_id);
+		$result = $this -> user_model -> getCareList(5, $offset,$user_id);
+
+		
+        $data = array(
+            'data' => $result,
+            'total_rows' => $total_rows
+        );
+
+		echo json_encode($data);
+	}
+
+	public function fansList() {
+		$user_id = $this -> input -> get('id');
+		$page = $this -> input -> get('page');
+        $offset = ($page -1)*5;
+        $total_rows = $this -> user_model -> getFansCount($user_id);
+		$result = $this -> user_model -> getFansList(5, $offset,$user_id);
+
+		
+        $data = array(
+            'data' => $result,
+            'total_rows' => $total_rows
+        );
+
+		echo json_encode($data);
+	}
+
 
 }

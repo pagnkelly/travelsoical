@@ -7,12 +7,16 @@ class Local_model extends CI_Model {
     }
 
     public function getAll($limit,$offset){
-      $this -> db -> select('*');
-      $this -> db -> from('t_local');
-      $this -> db -> limit($limit,$offset);
-      return $this -> db -> get() -> result();
+		$this -> db -> select('*');
+		$this -> db -> from('t_local');
+		$this -> db -> limit($limit,$offset);
+		return $this -> db -> get() -> result();
     }
-    
+    public function getDetail($local_id){
+		return $this -> db -> get_where('t_local', array(
+          'local_id' => $local_id
+        )) -> row();
+    }
 }
 
 

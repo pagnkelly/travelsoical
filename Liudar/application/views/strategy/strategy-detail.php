@@ -13,31 +13,27 @@
 			<div class="ui large breadcrumb">
 			  <a href = "Strategy" class="section">攻略</a>
 			  <i class="right chevron icon divider"></i>
-			  <div class="active section">ssss的攻略</div>
+			  <div class="active section"><?php echo $user_info -> user_name; ?>的攻略</div>
 			</div>
 			<div class="ui section divider"></div>
 			<div class="strategy-header">
-				<img src="img/local/local-person-1.jpg" alt="" class="ui avatar image">	
-				<span>喝酒<i class="icon male"></i></span>
-				<div class="fans">粉丝数：1020</div>
-				<div class="button ui red " style="margin-top:5px;">关注</div>
+				<img src="<?php echo $user_info -> avator; ?>" alt="" class="ui avatar image">	
+				<span><?php echo $user_info -> user_name; ?><i class="icon male"></i></span>
+				<div class="fans">粉丝数：<span><?php echo $fans; ?></span></div>
+				<div class="button ui red focus-other" style="margin-top:5px;" data-id=<?php echo $user_info -> user_id; ?>><?php echo $user_info -> is_fans; ?></div>
 			</div>
 			
 			
 			<div class="ui segment">
-			  <img class="ui small left floated image" src="/images/wireframe/text-image.png">
-			  <p>Te eum doming eirmod, nominati pertinacia argumentum ad his. Ex eam alia facete scriptorem, est autem aliquip detraxit at. Usu ocurreret referrentur at, cu epicurei appellantur vix. Cum ea laoreet recteque electram, eos choro alterum definiebas in. Vim dolorum definiebas an. Mei ex natum rebum iisque.</p>
-			  <img class="ui small right floated image" src="/images/wireframe/text-image.png">
-			  <p>Audiam quaerendum eu sea, pro omittam definiebas ex. Te est latine definitiones. Quot wisi nulla ex duo. Vis sint solet expetenda ne, his te phaedrum referrentur consectetuer. Id vix fabulas oporteat, ei quo vide phaedrum, vim vivendum maiestatis in.</p>
-			   <p>Eu quo homero blandit intellegebat. Incorrupte consequuntur mei id. Mei ut facer dolores adolescens, no illum aperiri quo, usu odio brute at. Qui te porro electram, ea dico facete utroque quo. Populo quodsi te eam, wisi everti eos ex, eum elitr altera utamur at. Quodsi convenire mnesarchum eu per, quas minimum postulant per id.</p>
+			  	<?php echo $data -> content; ?>
 			</div>
 
 			<div class="strategy-footer">
 				<p>
-					途径：北京-> 上海-> 广州
+					途径：<?php echo $data -> way; ?>
 				</p>
 				<p>
-					行程：长城-> 圆明园-> 明珠塔
+					行程：<?php echo $data -> trip; ?>
 				</p>
 			</div>
 			<div class="ui comments">
@@ -128,7 +124,21 @@
 	<script src="js/semantic.min.js"></script>
 	<script>
 	$(function(){
-		
+		$('.focus-other').on('click',function(){
+       		var $this = $(this);
+   			var user_id = $this.data('id');
+   			$.get('strategy/beFans',{id:user_id},function(res){
+   				if(res == 'be'){
+   					$this.html('取消关注');
+   					var fans_num = parseInt($('.fans span').html()) +1;
+   					$('.fans span').html(fans_num);
+   				}else{
+   					$this.html('关注');
+   					var fans_num = parseInt($('.fans span').html()) -1;
+   					$('.fans span').html(fans_num);
+   				}
+   			});
+       	});
 		
 	});
 	

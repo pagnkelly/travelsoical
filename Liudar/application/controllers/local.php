@@ -5,6 +5,7 @@ class Local extends CI_Controller {
 	function __construct() {
 		parent::__construct();
 		$this -> load -> model('local_model');
+		$this -> load -> model('order_model');
 	}
 
 
@@ -12,7 +13,9 @@ class Local extends CI_Controller {
 		$this->load->view('local/local');
 	}
 	public function detail(){
-		$this->load->view('local/local-detail');
+		$local_id = $this -> input -> get('id');
+		$data = $this -> local_model -> getDetail($local_id);
+		$this->load->view('local/local-detail',array( 'data' => $data));
 	}
 
 	public function getAll(){
@@ -30,7 +33,17 @@ class Local extends CI_Controller {
 		echo json_encode($data);
 	}
 
-
+	public function order(){
+		$user_id = $this -> input -> post('user_id');
+		$local_id = $this -> input -> post('local_id');
+		$in_time = $this -> input -> post('in_time');
+		$out_time = $this -> input -> post('out_time');
+		$totalPrice = $this -> input -> post('totalPrice');
+		$row = $this -> order_model -> saveLocal($user_id,$local_id,$in_time,$out_time,$totalPrice);
+		if($row){
+			echo "true";
+		}
+	}
 
 
 	

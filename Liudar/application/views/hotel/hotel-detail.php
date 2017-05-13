@@ -13,11 +13,11 @@
 			<div class="ui large breadcrumb">
 			  <a class="section">酒店</a>
 			  <i class="right chevron icon divider"></i>
-			  <div class="active section">北京xxx酒店</div>
+			  <div class="active section"><?php echo $data -> hotel_name;?></div>
 			</div>
 			<div class="ui section divider"></div>
-			<h2 class="ui header">北京xxx酒店<span class="level">3星级</span></h2>
-			<div class="sub header">北京海淀区29号 <i class="marker icon"></i> <a href="" class="item">查看地图</a></div>
+			<h2 class="ui header"><?php echo $data -> hotel_name;?><span class="level"><?php echo $data -> level;?>星级</span></h2>
+			<div class="sub header"><?php echo $data -> address;?> <i class="marker icon"></i> <a href="" class="item">查看地图</a></div>
 			<div class="detail-info recommend">
 				<div class="detail-pic">
 					<div class="pics">
@@ -37,8 +37,8 @@
 				<div class="detail-des">
 					<div class="ui segment" style="height:200px;">
 						<div class="ui vertical segment">
-							<a href="" class="header ui inverted blue">4.2/5 <div class="ui large star rating" data-rating="4" data-max-rating="5"></div></a>
-				     		<a href="" class="item right floated price">￥245起</a>	
+							<a href="" class="header ui inverted blue"><?php echo $data -> score;?>/5 <div class="ui large star rating" data-rating="4" data-max-rating="5"></div></a>
+				     		<a href="" class="item right floated price">￥<?php echo $data -> price;?>起</a>	
 						</div>
 				     	<div class="ui vertical segment">
 				     		<a href="" class="header ui inverted blue">375条评论 </a>
@@ -62,86 +62,28 @@
 			    </tr>
 			  </thead>
 			  <tbody>
+			  	<?php foreach( $types as $type ){?>
 			    <tr>
 			      <td>
 			      	<div class="item">
 			      		<div class="fds">
 			      			<div style="float: left">
-								<img class="ui tiny image" src="img/hotel/hotel-tuijian-1.jpg">
+								<img class="ui tiny image" src=<?php echo $type -> img;?>>
 			      			</div> 
 			      			<div class="fd">
-								 <p>单人标准间</p>
+								 <p><?php echo $type -> hotel_type;?></p>
 								 <i class="icon wifi"></i><i class="icon user"></i>
 			      			</div>
 			      		</div>
 					</div>		  
 				  </td>
-			      <td>无早餐</td>
-			      <td><div class="price">￥245</div></td>
+			      <td><?php echo $type -> breakfast == 1?'有早餐':'无早餐' ;?></td>
+			      <td><div class="price">￥<?php echo $type -> price;?></div></td>
 			      <td>
 					<div class="ui button primary order-item">订购</div>
 			      </td>
 			    </tr>
-			     <tr>
-			      <td>
-			      	<div class="item">
-			      		<div class="fds">
-			      			<div style="float: left">
-								<img class="ui tiny image" src="img/hotel/hotel-tuijian-2.jpg">
-			      			</div> 
-			      			<div class="fd">
-								 <p>特惠房</p>
-								 <i class="icon wifi"></i><i class="icon users"></i>
-			      			</div>
-			      		</div>
-					</div>		  
-				  </td>
-			      <td>无早餐</td>
-			      <td><div class="price">￥245</div></td>
-			      <td>
-					<div class="ui button primary order-item">订购</div>
-			      </td>
-			    </tr>
-			     <tr>
-			      <td>
-			      	<div class="item">
-			      		<div class="fds">
-			      			<div style="float: left">
-								<img class="ui tiny image" src="img/hotel/hotel-tuijian-3.jpg">
-			      			</div> 
-			      			<div class="fd">
-								 <p>标准间</p>
-								 <i class="icon wifi"></i><i class="icon users"></i>
-			      			</div>
-			      		</div>
-					</div>		  
-				  </td>
-			      <td>无早餐</td>
-			      <td><div class="price">￥245</div></td>
-			      <td>
-					<div class="ui button primary order-item">订购</div>
-			      </td>
-			    </tr>
-			     <tr>
-			      <td>
-			      	<div class="item">
-			      		<div class="fds">
-			      			<div style="float: left">
-								<img class="ui tiny image" src="img/hotel/hotel-tuijian-1.jpg">
-			      			</div> 
-			      			<div class="fd">
-								 <p>大床房</p>
-								 <i class="icon wifi"></i><i class="icon users"></i>
-			      			</div>
-			      		</div>
-					</div>		  
-				  </td>
-			      <td>无早餐</td>
-			      <td><div class="price">￥245</div></td>
-			      <td>
-					<div class="ui button primary order-item">订购</div>
-			      </td>
-			    </tr>
+				<?php } ?>
 			  </tbody>
 			</table>
 			<div class="ui top attached tabular menu">
@@ -156,7 +98,7 @@
 				  			联系方式
 					  		</div>
 					  		<div class="detail-con">
-					  			3213212222
+					  			<?php echo $data -> telphone;?>
 					  		</div>
 				  		</div>
 				  		<div class="clearfix" style="margin-bottom: 10px;">
@@ -164,7 +106,7 @@
 				  			基本信息
 					  		</div>
 					  		<div class="detail-con">
-							1993年开业2010年最后一次装修58间客房层高6层
+							<?php echo $data -> base_info;?>
 					  		</div>
 				  		</div>
 				  		<div class="clearfix">
@@ -172,7 +114,7 @@
 				  			酒店简介
 					  		</div>
 					  		<div class="detail-con">
-					  		酒店装修温馨，雅致，客房内的配套设施完善，将人性化，品质化，个性化完美结合。所有房间配有宽带接口，酒店还设有商务中心、商品部，各种风格会议室，以及丰富的娱乐设施健身房，棋牌室，以及桑拿按摩中心等，都是商务及旅游人士的选择。距离地铁4号线新街口D出口300米。
+					  		<?php echo $data -> hotel_introduction;?>
 					  		</div>
 				  		</div>
 				  		
@@ -183,7 +125,7 @@
 				  			网络设施
 					  		</div>
 					  		<div class="detail-con">
-					  		<i class="icon wifi green"></i>公共区域和部分房间提供wifi
+					  		<i class="icon wifi green"></i><?php echo $data -> net_facilities;?>
 					  		</div>
 				  		</div>
 				  		
@@ -392,17 +334,17 @@
 		     	<img src="img/hotel/hotel-tuijian-1.jpg" alt="" class="ui small image" id="photo">
 		    </div>
 	   		<div class="fd">
-	  			<p>房型： 单人标准间 </p>
-	  			<p>单价：￥245</p>
+	  			<p class="fd-type">房型： 单人标准间 </p>
+	  			<p class="fd-price">单价：￥245</p>
 	  		</div>
 		</div>
 		<div class="ui section divider"></div>
 		<div class="total-price">
-			总价：<span>￥2232</span>
+			总价：<span>￥0</span>
 		</div>
 	  	<div class="actions">
 		    <div class="ui button" id="order-cancel">取消</div>
-		    <div class="ui button">确定</div>
+		    <div class="ui button" id="order-sure">确定</div>
 	  	</div>
 	</div>
 	<script src="js/jquery-1.9.1.min.js"></script>
@@ -419,6 +361,9 @@
 	        yearRange: [2000, 2020],
 	        onSelect: function(){
 	        	outDatePicker.setMinDate(new Date(inDatePicker.toString()));
+	        	if(outDatePicker.toString()){
+	        		selectHandel();
+	        	}
 	        }
 	    });
 
@@ -429,13 +374,57 @@
 	        minDate: new Date(),
 	        maxDate: new Date('2020-12-31'),
 	        yearRange: [2000, 2020],
-	         onSelect: function(){
+	        onSelect: function(){
 	        	inDatePicker.setMaxDate(new Date(outDatePicker.toString()));
+	        	if(inDatePicker.toString()){
+	        		selectHandel();
+	        	}
 	        }
 	    });
-		$('.order-item').on('click',function(){
-				$('.ui.modal').modal('show');
+		var days,time;
+	    function selectHandel() {
+	    	
+	    	time = new Date(outDatePicker.toString()).getTime()-new Date(inDatePicker.toString()).getTime()
+	        days = parseInt(time/(1000*60*60*24));
+	        var $totalPrice = $('.total-price span');
+	        $totalPrice.html(price*days);
+			
+	    }
+	    $('#order-sure').on('click',function(){
+				var hotel_id = <?php echo $data -> hotel_id;?>;
+				
+				if(price*days){
+					$.post('hotel/order',{totalPrice: price*days , in_time: inDatePicker.toString() , out_time: outDatePicker.toString(),hotel_id: hotel_id,user_id: user_id },function(res){
+						console.log(res);
+						if(res == 'true' ) {
+							alert('请到我的订单中查看');
+							$('.ui.modal').modal('hide');
+						}
+					});
+				}else{
+					alert('选择入住天数需大于1');
+				}
 		});
+	    var price,type,user_id;
+		$('.order-item').each(function(){
+			var $this = $(this);
+			$this.on('click',function(){
+				price = $this.parents('tr').find('.price').html().replace('￥','');
+				type = $this.parents('tr').find('.fd p').html();
+				$('.ui.modal').find('.fd .fd-price').html('单价：￥'+price);
+				$('.ui.modal').find('.fd .fd-type').html('房型：'+type);
+				$('.ui.modal').modal('show');
+				user_id =<?php if($user) {echo $user -> user_id;}else{echo -1;}?>;
+				if(user_id == -1){
+					alert("请登录");
+					var loHref = location.pathname+location.search;
+					location.href = 'login?last='+loHref;
+				}else{
+
+				}
+			});
+			
+		})
 			
 		$('#order-cancel').on('click',function(){
 			$('.ui.modal').modal('hide');

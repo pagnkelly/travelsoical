@@ -91,7 +91,7 @@
 
 
 	<script type="text/template" id="tmpl">
-			<div class="ui card" style="cursor:pointer">
+			<div class="ui card" style="cursor:pointer" data-id="<%= local_id%>" >
 			  	<div class="image dimmable">
 					<img src="<%= photo%>">
 			  	</div>
@@ -152,12 +152,7 @@
 		    interactive: false
 		});
 
-		$('.ui.card').each(function(index,item){
-			var $item = $(item);
-			$item.on('click',function(){
-				location.href= 'Local/detail';
-			});
-		})
+		
 
 		var cur_page = 1;
 		function loadData(url){
@@ -207,6 +202,14 @@
 	           		$('.page_detail').html((cur_page+1)+'/'+total_page);
 	           		$('#page .page').eq(cur_page).trigger('click');
 	           	})
+
+	           	$('.ui.card').each(function(index,item){
+					var $item = $(item);
+					var local_id = $item.data('id');
+					$item.on('click',function(){
+						location.href= 'Local/detail?id='+local_id;
+					});
+				})
 	        },'json');
 		}
 

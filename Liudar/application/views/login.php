@@ -89,13 +89,16 @@
 		regist.onclick = function(){
 			window.location.href='Regist'
 		}
-
 		$('#submit').on('click',function(){
 			var name = $('#name').val();
 			var password = $('#password').val();
 			$.post('login/checkLogin',{name:name,password:password},function(res){
 				if(res == 'true'){
-					location.href='index';
+					if(location.search){
+						location.href=location.search.replace('?last=/Liudar/','');
+					}else{
+					    location.href='index';
+					}
 				}
 				if(res == 'false'){
 					alert('用户名或密码不正确');

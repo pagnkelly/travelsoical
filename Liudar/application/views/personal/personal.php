@@ -118,91 +118,17 @@
 									<div class="ui submit button" id="submit">提交</div>
 							</div>
 							<div class="ui segment hidden" id="order-list">
-								<div class="ui button primary">全部</div>
-								<div class="ui button">当地人订单</div>
-								<div class="ui button">酒店订单</div>
-								<div class="ui divided items">
-								  	<div class="order-item clearfix">
-								  		<div class="item-header">
-								  			订单号： 131231231231 预定时间： 2015-07-21 11：02
-								  		</div>
-								  		<div class="item-content">
-								  			<div class="hotel-img">
-								  				<div class="ui small image">
-										      		<img src="img/hotel/hotel-tuijian-1.jpg">
-										    	</div>
-								  			</div>
-									    	<div class="order-des">
-									    		<div class="header">香港九龙诺夫特酒店（sdsadsadsda）</div>
-									    		<div class="time">
-									    		住：2015-08-17 离： 2015-08-18
-									    		</div>
-									   		</div>
-									    	<div class="acount-price">￥231</div>
-									    	<div class="operation">
-										    	<div class="ui buttons">
-													<div class="ui button">取消订单</div>
-													<div class="or"></div>
-													<div class="ui positive button">立即购买</div>
-												</div>
-									   		</div>
-								  		</div>
-									</div>
-									<div class="order-item clearfix">
-								  		<div class="item-header">
-								  			订单号： 131231231231 预定时间： 2015-07-21 11：02
-								  		</div>
-								  		<div class="item-content">
-								  			<div class="hotel-img">
-								  				<div class="ui small image">
-										      		<img src="img/hotel/hotel-tuijian-2.jpg">
-										    	</div>
-								  			</div>
-									    	<div class="order-des">
-									    		<div class="header">香港九龙诺夫特酒店（sdsadsadsda）</div>
-									    		<div class="time">
-									    		住：2015-08-17 离： 2015-08-18
-									    		</div>
-									   		</div>
-									    	<div class="acount-price">￥231</div>
-									    	<div class="operation">
-										    	<div class="ui buttons">
-													<div class="ui button">取消订单</div>
-													<div class="or"></div>
-													<div class="ui positive button">立即购买</div>
-												</div>
-									   		</div>
-								  		</div>
-									</div>
-									<div class="order-item clearfix">
-								  		<div class="item-header">
-								  			订单号： 131231231231 预定时间： 2015-07-21 11：02
-								  		</div>
-								  		<div class="item-content">
-								  			<div class="hotel-img">
-								  				<div class="ui small image">
-										      		<img src="img/hotel/hotel-tuijian-3.jpg">
-										    	</div>
-								  			</div>
-									    	<div class="order-des">
-									    		<div class="header">香港九龙诺夫特酒店（sdsadsadsda）</div>
-									    		<div class="time">
-									    		住：2015-08-17 离： 2015-08-18
-									    		</div>
-									   		</div>
-									    	<div class="acount-price">￥231</div>
-									    	<div class="operation">
-										    	<div class="ui buttons">
-													<div class="ui button">取消订单</div>
-													<div class="or"></div>
-													<div class="ui positive button">立即购买</div>
-												</div>
-									   		</div>
-								  		</div>
-									</div>
+								<div class="ui button primary" id="hotel-order">酒店订单</div>
+								<div class="ui button" id="local-order">当地人订单</div>
+								<div class="ui divided items" id="tmpl-order">
+
+
+								</div>
+								<div class="ui pagination menu" id="page-order">
+									
 								</div>
 		  					</div>
-							<div class="ui segment hidden" id="my-strategy">
+							<div class="ui segment hidden"  id="my-strategy">
 
 								<table class="ui table">
 								  	<thead>
@@ -214,169 +140,35 @@
 								      		<th>查看详情</th>
 								    	</tr>
 								  	</thead>
-								 	<tbody>
-								    	<tr>
-								      		<td>大理之行</td>
-								      		<td>2013年9月14日</td>
-								     		<td>云南，贵州</td>
-								      		<td>大理，丽江，西双版纳</td>
-								      		<td><div class="ui primary button">详细内容>></div><div class="button ui">删除</div></td>
-								   		</tr>
-								   		<tr>
-								      		<td>大理之行</td>
-								      		<td>2013年9月14日</td>
-								     		<td>云南，贵州</td>
-								      		<td>大理，丽江，西双版纳</td>
-								      		<td><div class="ui primary button">详细内容>></div><div class="button ui">删除</div></td>
-								    	</tr>
-								    	<tr>
-								      		<td>大理之行</td>
-								      		<td>2013年9月14日</td>
-								     		<td>云南，贵州</td>
-								      		<td>大理，丽江，西双版纳</td>
-								      		<td><div class="ui primary button">详细内容>></div><div class="button ui">删除</div></td>
-								    	</tr>
+								 	<tbody id="tmpl-strategy">
+								    	
+								   		
 								  	</tbody>
 								</table>
+								<div class="ui pagination menu" id="page-strategy">
+									
+								</div>
 							</div>
 							<div class="ui segment hidden" id="my-care">
-								<div class="ui divided items">
-  									<div class="item">
-   									 	<div class="circle-photo" >
-     								 		<img src="img/local/local-person-1.jpg"style="width:100%;height:100%;">
-    									</div>
-    									<div class="middle aligned content" style="margin-left:64px;">
-      										<div class="header">
-									        name
-									    	</div>
-      										<div class="description">
-        									<p>简介：的撒旦撒旦撒安第斯山</p>
-        									<p>个人签名：的撒旦撒</p>
-      										</div>
-      										<div class="ui right floated button">
-      											<i class="icon heart"></i>
-										         取消关注  
-										    </div>
-    									</div>
-  									</div>
-									<div class="item">
-   									 	<div class="circle-photo" >
-     								 		<img src="img/local/local-person-1.jpg"style="width:100%;height:100%;">
-    									</div>
-    									<div class="middle aligned content" style="margin-left:64px;">
-      										<div class="header">
-									        name
-									    	</div>
-      										<div class="description">
-        									<p>简介：的撒旦撒旦撒安第斯山</p>
-        									<p>个人签名：的撒旦撒</p>
-      										</div>
-      										<div class="ui right floated button">
-      											<i class="icon heart"></i>
-										         取消关注  
-										    </div>
-    									</div>
-  									</div>
-									<div class="item">
-   									 	<div class="circle-photo" >
-     								 		<img src="img/local/local-person-2.jpg"style="width:100%;height:100%;">
-    									</div>
-    									<div class="middle aligned content" style="margin-left:64px;">
-      										<div class="header">
-									        name
-									    	</div>
-      										<div class="description">
-        									<p>简介：的撒旦撒旦撒安第斯山</p>
-        									<p>个人签名：的撒旦撒</p>
-      										</div>
-      										<div class="ui right floated button">
-      											<i class="icon heart"></i>
-										         取消关注  
-										    </div>
-    									</div>
-  									</div>
-									<div class="item">
-   									 	<div class="circle-photo" >
-     								 		<img src="img/local/local-person-3.jpg"style="width:100%;height:100%;">
-    									</div>
-    									<div class="middle aligned content" style="margin-left:64px;">
-      										<div class="header">
-									        name
-									    	</div>
-      										<div class="description">
-        									<p>简介：的撒旦撒旦撒安第斯山</p>
-        									<p>个人签名：的撒旦撒</p>
-      										</div>
-      										<div class="ui right floated button">
-      											<i class="icon heart"></i>
-										         取消关注  
-										    </div>
-    									</div>
-  									</div>
+								<div class="ui divided items" id="tmpl-care">
+  									
+									
 
+								</div>
+								<div class="ui pagination menu" id="page-care">
 								</div>
 							</div>
 							<div class="ui segment hidden" id="my-fans">
-								<div class="ui divided items">
-  									<div class="item">
-   									 	<div class="circle-photo" >
-     								 		<img src="img/local/local-person-1.jpg"style="width:100%;height:100%;">
-    									</div>
-    									<div class="middle aligned content" style="margin-left:64px;">
-      										<div class="header">
-									        name
-									    	</div>
-      										<div class="description">
-        									<p>简介：的撒旦撒旦撒安第斯山</p>
-        									<p>个人签名：的撒旦撒</p>
-      										</div>
-    									</div>
-  									</div>
-									<div class="item">
-   									 	<div class="circle-photo" >
-     								 		<img src="img/local/local-person-1.jpg"style="width:100%;height:100%;">
-    									</div>
-    									<div class="middle aligned content" style="margin-left:64px;">
-      										<div class="header">
-									        name
-									    	</div>
-      										<div class="description">
-        									<p>简介：的撒旦撒旦撒安第斯山</p>
-        									<p>个人签名：的撒旦撒</p>
-      										</div>
-    									</div>
-  									</div>
-									<div class="item">
-   									 	<div class="circle-photo" >
-     								 		<img src="img/local/local-person-2.jpg"style="width:100%;height:100%;">
-    									</div>
-    									<div class="middle aligned content" style="margin-left:64px;">
-      										<div class="header">
-									        name
-									    	</div>
-      										<div class="description">
-        									<p>简介：的撒旦撒旦撒安第斯山</p>
-        									<p>个人签名：的撒旦撒</p>
-      										</div>
-    									</div>
-  									</div>
-									<div class="item">
-   									 	<div class="circle-photo" >
-     								 		<img src="img/local/local-person-3.jpg"style="width:100%;height:100%;">
-    									</div>
-    									<div class="middle aligned content" style="margin-left:64px;">
-      										<div class="header">
-									        name
-									    	</div>
-      										<div class="description">
-        									<p>简介：的撒旦撒旦撒安第斯山</p>
-        									<p>个人签名：的撒旦撒</p>
-      										</div>
-    									</div>
-  									</div>
+								<div class="ui divided items" id="tmpl-fans">
+  									
 
 								</div>
+								<div class="ui pagination menu" id="page-fans">
+									
+								</div>
 							</div>
+
+
 						</div>
 					</div>
 			      </div>
@@ -386,12 +178,122 @@
 
 		</div>
 	</div>
+
+
+	<script type="text/template" id="tmpl-o">
+		<div class="order-item clearfix">
+	  		<div class="item-header">
+	  			订单号： <%= id %> 预定时间： <%= book_time%>
+	  		</div>
+	  		<div class="item-content">
+	  			<div class="hotel-img">
+	  				<div class="ui small image">
+			      		<img src="<%= img%>">
+			    	</div>
+	  			</div>
+		    	<div class="order-des">
+		    		<div class="header"><%= hotel_name%></div>
+		    		<div class="time">
+		    		住：<%= in_time%> 离： <%= out_time%>
+		    		</div>
+		   		</div>
+		    	<div class="acount-price">￥<%= price%></div>
+		    	<div class="operation">
+			    	<div class="ui buttons">
+						<div class="ui button">取消订单</div>
+						<div class="or"></div>
+						<div class="ui positive button">立即购买</div>
+					</div>
+		   		</div>
+	  		</div>
+		</div>
+	</script>
+	<script type="text/template" id="tmpl-l-o">
+		<div class="order-item clearfix">
+	  		<div class="item-header">
+	  			订单号： <%= id %> 预定时间： <%= book_time%>
+	  		</div>
+	  		<div class="item-content">
+	  			<div class="hotel-img">
+	  				<div class="ui small image">
+			      		<img src="<%= photo%>">
+			    	</div>
+	  			</div>
+		    	<div class="order-des">
+		    		<div class="header"><%= local_name%>       <span><%= local_city%></span></div>
+		    		<div class="time">
+		    		起：<%= in_time%> 终： <%= out_time%>
+		    		</div>
+		   		</div>
+		    	<div class="acount-price">￥<%= price%></div>
+		    	<div class="operation">
+			    	<div class="ui buttons">
+						<div class="ui button">取消订单</div>
+						<div class="or"></div>
+						<div class="ui positive button">立即购买</div>
+					</div>
+		   		</div>
+	  		</div>
+		</div>
+	</script>
+	
+	<script type="text/template" id="tmpl-s">
+		<tr>
+      		<td><%= title%></td>
+      		<td><%= time%></td>
+     		<td><%= way%></td>
+      		<td><%= trip%></td>
+      		<td><a href="" class="item">详细内容>></a>  |  <a href="" class="item">删除</a></td>
+
+   		</tr>
+	</script>
+
+	<script type="text/template" id="tmpl-c">
+		<div class="item">
+		 	<div class="circle-photo" >
+		 		<img src="<%= avator%>" style="width:100%;height:100%;">
+			</div>
+			<div class="middle aligned content" style="margin-left:64px;">
+				<div class="header">
+		        <%= user_name%>
+		    	</div>
+				<div class="description">
+					<p>简介：<%= introduction%></p>
+					<p>个人签名：<%= signature%></p>
+				</div>
+				<div class="ui right floated button">
+					<i class="icon heart"></i>
+		         取消关注  
+		   		 </div>
+			</div>
+		</div>
+
+	</script>
+
+	<script type="text/template" id="tmpl-f">
+		<div class="item">
+		 	<div class="circle-photo" >
+		 		<img src="<%= avator%>" style="width:100%;height:100%;">
+			</div>
+			<div class="middle aligned content" style="margin-left:64px;">
+				<div class="header">
+		        <%= user_name%>
+		    	</div>
+				<div class="description">
+					<p>简介：<%= introduction%></p>
+					<p>个人签名：<%= signature%></p>
+				</div>
+			</div>
+		</div>
+
+	</script>
 	<script src="js/jquery-1.9.1.min.js"></script>
 	<script src="js/semantic.min.js"></script>
+	<script src="js/underscore.js"></script>
 	<script>
 	$(function(){
 			var photoSrc;
-
+			var user_id = <?php echo $user -> user_id;?>;
 			$('.card .dimmer').dimmer({
 			    on: 'hover'
 			  });
@@ -427,22 +329,92 @@
 				$('#person-info').removeClass('hidden');
 				$('#person-info').siblings().addClass('hidden');
 			});
+
+			var cur_page = 1;
+			function loadData(url,container,reqdata,pageContainer,tmpl){
+
+				$.get(url,$.extend({page:1},reqdata), function (res) {
+					console.log(res);
+		           	$(container).html('');
+		           	for(var i=0;i<res.data.length;i++){
+		           		var item = res.data[i];
+	                   	$(container).append(_.template($(tmpl).html())(item));
+		           	}
+					var total_page = Math.ceil(res.total_rows/5);
+					$(pageContainer).html('');
+	           		$(pageContainer).append('<a class="icon item prev"><i class="left arrow icon"></i></a>');
+	           		for(var j=1;j<=total_page;j++){
+	           			$(pageContainer).append('<a class="item page '+(j==1?'active':'')+'">'+j+'</a>');
+	           		}
+	           		$(pageContainer).append('<a class="icon item next"><i class="right arrow icon"></i></a>');
+
+		           	$(pageContainer+' .page').each(function(index,item){
+		           		var $this = $(this);
+	 	           		$this.on('click',function(){
+		           			$this.siblings().removeClass('active');
+		           			$this.addClass('active');
+		           			cur_page = index+1;
+		           			$.get(url,$.extend({page:cur_page},reqdata),function(res){
+	           					$(container).html('');
+	           					for(var i=0;i<res.data.length;i++){
+				           		var item = res.data[i];
+			                   	$(container).append(_.template($(tmpl).html())(item));
+					           	}
+		           			},'json')
+		           		});
+		           	});
+
+		           	$('.prev').on('click',function(){
+		           		if(cur_page == 1){
+		           			return ;
+		           		}
+		           		$(pageContainer+' .page').eq(cur_page-2).trigger('click');
+		           	})
+
+		           	$('.next').on('click',function(){
+		           		if(cur_page == total_page){
+		           			return ;
+		           		}
+		           		$(pageContainer+' .page').eq(cur_page).trigger('click');
+		           	})
+		        },'json');
+			}
+
+
 			$('#order-btn').on('click',function(){
+				loadData('personal/orderList','#tmpl-order',{id:user_id},'#page-order','#tmpl-o');
+
 				$('#order-list').removeClass('hidden');
 				$('#order-list').siblings().addClass('hidden');
 
 			});
+			$('#hotel-order').on('click',function(){
+				$('#hotel-order').addClass('primary');
+				$('#local-order').removeClass('primary');
+				loadData('personal/orderList','#tmpl-order',{id:user_id},'#page-order','#tmpl-o');
+			});
+			$('#local-order').on('click',function(){
+				$('#local-order').addClass('primary');
+				$('#hotel-order').removeClass('primary');
+				loadData('personal/localOrderList','#tmpl-order',{id:user_id},'#page-order','#tmpl-l-o');
+			});
 			$('#strategy-btn').on('click',function(){
+				loadData('personal/strategyList','#tmpl-strategy',{id:user_id},'#page-strategy','#tmpl-s');
+
 				$('#my-strategy').removeClass('hidden');
 				$('#my-strategy').siblings().addClass('hidden');
 
 			});
 			$('#care-btn').on('click',function(){
+				loadData('personal/careList','#tmpl-care',{id:user_id},'#page-care','#tmpl-c');
+
 				$('#my-care').removeClass('hidden');
 				$('#my-care').siblings().addClass('hidden');
 
 			});
 			$('#fans-btn').on('click',function(){
+				loadData('personal/fansList','#tmpl-fans',{id:user_id},'#page-fans','#tmpl-f');
+
 				$('#my-fans').removeClass('hidden');
 				$('#my-fans').siblings().addClass('hidden');
 
