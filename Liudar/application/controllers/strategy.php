@@ -23,6 +23,10 @@ class Strategy extends CI_Controller {
 		    		$item -> is_fans = false;
 		    	}
 		    }
+	    }else{
+	    	foreach ($res as $item ){
+		    	$item -> is_fans = false;
+		    }
 	    }
 
 		$this->load->view('strategy/strategy',array( 'hotUsers' => $res));
@@ -50,6 +54,8 @@ class Strategy extends CI_Controller {
 	    	}else{
 	    		$user -> is_fans = '关注';
 	    	}
+	    }else{
+	    	$user -> is_fans = '关注';
 	    }
 		$data = array( 'data' => $res , 'user_info'=>$user,'fans'=> $fansCount);
 		$this->load->view('strategy/strategy-detail',$data);
@@ -74,6 +80,10 @@ class Strategy extends CI_Controller {
 		    		$item -> is_fans = '关注';
 		    	}
 		    }
+	    }else{
+	    	foreach ($result as $item ){
+		    	$item -> is_fans = '关注';
+		    }
 	    }
         foreach ( $result as $value){ 
         	$value ->photo = explode('#',$value ->photo);
@@ -94,6 +104,9 @@ class Strategy extends CI_Controller {
         
 
         $result = $this -> strategy_model -> getHotAll(5, $offset);
+        foreach ($result as $item ){
+		    $item -> is_fans = '关注';
+		}
         foreach ( $result as &$value){ 
         	$value ->photo = explode('#',$value ->photo);
 		}  

@@ -93,18 +93,18 @@
 			<div class="eleven wide column">
 				<h2 class="ui header">查询酒店结果</h2>
 				<div class="ui menu">
- 					<a class="item">
+ 					<a class="item" id="defaultRank">
 					默认排序
 				 	</a>
-				 	<a class="item">
+				 	<a class="item" id="levelRank">
 						星级
 						<i class="sort icon"></i>
 				 	</a>
-				 	<a class="item">
+				 	<a class="item" id="priceRank">
 						价格
 						<i class="sort icon"></i>
 				 	</a>
-				 	<a class="item">
+				 	<a class="item" id="scoreRank">
 						评分
 						<i class="arrow down icon"></i>
 				 	</a>
@@ -138,7 +138,7 @@
 				      	</div>
 				      	<div class="description font-blue">
 				      		评价： 
-							<div class="ui large star rating" data-rating="2" data-max-rating="<%= score%>"></div>
+							<div class="ui large star rating" data-rating="<%= score%>" data-max-rating="5"></div>
 							| <%= comments%>条点评
 				     	 </div>
 				      		<div class="extra">
@@ -177,27 +177,56 @@
 	        minDate: new Date(),
 	        maxDate: new Date('2020-12-31'),
 	        yearRange: [2000, 2020],
-	         onSelect: function(){
+	        onSelect: function(){
 	        	inDatePicker.setMaxDate(new Date(outDatePicker.toString()));
 	        }
 	    });
-
 		$('#search-btn').on('click',function(){
-			var data = {
-				hotel_name : $('.hotel-name').val(),
-				city_name: $('.city-name').val()
+			var hotel_name = $('.hotel-name').val(),
+				city_name = $('.city-name').val();
+			if(hotel_name || city_name){
+				var data = {
+					hotel_name : hotel_name,
+					city_name: city_name 
+				}
+				loadData('hotel/search',data);
 			}
-			loadData('hotel/search',data);
+			
 		});
 
-		$('.ui.rating').rating();
-		$('.ui.rating').rating({
-		    clearable: false,
-		    interactive: false
+		$('#defaultRank').on('click',function(){
+			loadData('hotel/getAll');
 		});
+
+		var level = 'desc';
+		var score = 'desc';
+		var price = 'desc';
+		var scoreClass = 'up';
+		$('#levelRank').on('click',function(){
+			loadData(action,$.extend(Rankdata,{action: 'level' ,rank:level}));
+			level = level == 'desc'? 'asc':'desc';
+		});
+		$('#scoreRank').on('click',function(){
+			$(this).find('i').addClass(scoreClass);
+			scoreClass = scoreClass == 'down' ? 'up' : 'down';
+			$(this).find('i').removeClass(scoreClass);
+			loadData(action,$.extend(Rankdata,{action: 'score' ,rank:score}));
+			score = score== 'desc'? 'asc':'desc';
+		});
+		$('#priceRank').on('click',function(){
+			loadData(action,$.extend(Rankdata,{action: 'price' ,rank:price}));
+			price = price == 'desc'? 'asc':'desc';
+		});
+
+		
+		var action;
+		var Rankdata ={};
 		var cur_page = 1;
 		function loadData(url,reqdata){
-
+			action = url;
+			if(reqdata){
+				Rankdata = reqdata;
+			}
 			$.get(url,$.extend({page:1},reqdata), function (res) {
 				console.log(res);
 	           	$('#tmpl-container').html('');
@@ -246,7 +275,13 @@
 	           		$('.page_detail').html((cur_page+1)+'/'+total_page);
 	           		$('#page .page').eq(cur_page).trigger('click');
 	           	})
-	        });
+
+	           	$('.ui.rating').rating();
+				$('.ui.rating').rating({
+				    clearable: false,
+				    interactive: false
+				});
+	        },'json');
 		}
 
 		loadData('hotel/getAll');

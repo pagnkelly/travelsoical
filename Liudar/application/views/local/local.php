@@ -24,7 +24,7 @@
 			    <div class="ui local search">
 					<div class="ui left icon input">
 			 		 <i class="world icon"></i>
-			  		<input class="prompt" type="text" placeholder="目的地" autocomplete="off">
+			  		<input class="prompt" type="text" placeholder="目的地" autocomplete="off" id="destination">
 				</div>
 					<div class="results"></div>
 			    </div>
@@ -61,14 +61,14 @@
 		<div class="container recommend">
 				<h2 class="ui header">查询导游结果</h2>
 				<div class="ui menu">
- 					<a class="item">
+ 					<a class="item" id ="defaultRank" >
 					默认排序
 				 	</a>
-				 	<a class="item">
+				 	<a class="item" id="priceRank">
 						价格
 						<i class="sort icon"></i>
 				 	</a>
-				 	<a class="item">
+				 	<a class="item" id="sales">
 						销量
 						<i class="arrow down icon"></i>
 				 	</a>
@@ -143,7 +143,31 @@
 	    });
 
 		$('#search-btn').on('click',function(){
-			console.log(outDatePicker.toString());
+			 var destination = $.trim($('#destination').val());
+			if(destination == ''){
+				return ;
+			}else{
+				loadData('local/search',{destination:destination});
+			}
+		});
+
+		$('#defaultRank').on('click',function(){
+			loadData('local/getAll');
+		});
+		var price = 'desc';
+		var sales = 'desc';
+		var salesClass = 'up'
+		$('#priceRank').on('click',function(){
+			console.log(Rankdata);
+			loadData(action,$.extend(Rankdata,{action: 'price',rank:price}));
+			price = price == 'desc'? 'asc':'desc';
+		});
+		$('#sales').on('click',function(){
+			$(this).find('i').addClass(salesClass);
+			salesClass = salesClass == 'down' ? 'up' : 'down';
+			$(this).find('i').removeClass(salesClass);
+			loadData(action,$.extend(Rankdata,{action: 'sell_num',rank:sales}));
+			sales = sales == 'desc'? 'asc':'desc';
 		});
 
 		$('.ui.rating').rating();
@@ -153,16 +177,23 @@
 		});
 
 		
-
+		var action;
+		var Rankdata ={};
 		var cur_page = 1;
-		function loadData(url){
-			$.get(url+'?page=1', function (res) {
+		function loadData(url,reqdata){
+			action = url;
+			if(reqdata){
+				Rankdata = reqdata;
+			}
+			$.get(url,$.extend({page:1},reqdata),function (res) {
+				console.log(res);
 	           	$('#tmpl-container').html('');
 	           	for(var i=0;i<res.locals.length;i++){
 	           		var local = res.locals[i];
                    	$('#tmpl-container').append(_.template($('#tmpl').html())(local));
 	           	}
 				var total_page = Math.ceil(res.total_rows/8);
+				$('#page').html('');
 				$('.page_detail').html((cur_page)+'/'+total_page);
            		$('#page').append('<a class="icon item prev"><i class="left arrow icon"></i></a>');
            		for(var j=1;j<=total_page;j++){
@@ -177,7 +208,7 @@
 	           			$this.addClass('active');
 	           			cur_page = index+1;
 	           			$('.page_detail').html((cur_page)+'/'+total_page);
-	           			$.get(url+'?page='+(index+1),function(res){
+	           			$.get(url,$.extend({page:cur_page},reqdata),function(res){
            					$('#tmpl-container').html('');
            					for(var i=0;i<res.locals.length;i++){
 			           		var local = res.locals[i];

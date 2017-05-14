@@ -28,9 +28,14 @@ class Hotel extends CI_Controller {
         $page = $this -> input -> get('page');
         $total_rows = $this -> hotel_model -> getCount();
         $offset = ($page -1)*9;
-        
-
-        $result = $this -> hotel_model-> getAll(9, $offset);
+        $action = $this -> input -> get('action');
+        if($action){
+        	$action = 't_hotel.'.$action;
+        	$rank = $this -> input -> get('rank');
+        	$result = $this -> hotel_model -> getAllOrderBy(9, $offset,$action,$rank);
+        }else{
+        	$result = $this -> hotel_model-> getAll(9, $offset);
+        }
         $data = array(
             'hotels' => $result,
             'total_rows' => $total_rows
@@ -55,19 +60,45 @@ class Hotel extends CI_Controller {
 
 	public function search(){
         $page = $this -> input -> get('page');
-        $total_rows = $this -> hotel_model -> getCount();
         $offset = ($page -1)*9;
-        $hotel_name = $this -> input -> get('hotel_name');
-        $city_name = $this -> input -> get('city_name');
-        var_dump($hotel_name); die();
-        $result = $this -> hotel_model-> getAll(9, $offset);
+        $hotel_name = trim($this -> input -> get('hotel_name'));
+        $city_name = trim($this -> input -> get('city_name'));
+        $action = $this -> input -> get('action');
+        if($action){
+        	$action = 't_hotel.'.$action;
+        	$rank = $this -> input -> get('rank');
+        	if($hotel_name != '' && $city_name != ''){
+	        	$result = $this -> hotel_model-> SearchBothOrderBy(9, $offset,$hotel_name,$city_name,$action,$rank);
+	        	$total_rows = $this -> hotel_model -> getBothCount($hotel_name,$city_name);
+	        }else if($hotel_name != '' ){
+	        	$result = $this -> hotel_model-> SearchHotelOrderBy(9, $offset,$hotel_name,$action,$rank);
+	        	$total_rows = $this -> hotel_model -> getHotelCount($hotel_name);
+	        }else{
+	        	$result = $this -> hotel_model-> SearchCityOrderBy(9, $offset,$city_name,$action,$rank);
+	        	$total_rows = $this -> hotel_model -> getCityCount($city_name);
+	        }
+        }else{
+        	if($hotel_name != '' && $city_name != ''){
+	        	$result = $this -> hotel_model-> SearchBoth(9, $offset,$hotel_name,$city_name);
+	        	$total_rows = $this -> hotel_model -> getBothCount($hotel_name,$city_name);
+	        }else if($hotel_name != '' ){
+	        	$result = $this -> hotel_model-> SearchHotel(9, $offset,$hotel_name);
+	        	$total_rows = $this -> hotel_model -> getHotelCount($hotel_name);
+	        }else{
+	        	$result = $this -> hotel_model-> SearchCity(9, $offset,$city_name);
+	        	$total_rows = $this -> hotel_model -> getCityCount($city_name);
+	        }
+        }
+
         $data = array(
             'hotels' => $result,
             'total_rows' => $total_rows
         );
-
 		echo json_encode($data);
 
 	}
+
+
+
 
 }

@@ -22,9 +22,14 @@ class Local extends CI_Controller {
         $page = $this -> input -> get('page');
         $total_rows = $this -> local_model -> getCount();
         $offset = ($page -1)*8;
-        
-
-        $result = $this -> local_model -> getAll(8, $offset);
+        $action = $this -> input -> get('action');
+        if($action){
+        	$action = 't_local.'.$action;
+        	$rank = $this -> input -> get('rank');
+        	$result = $this -> local_model -> getAllOrderBy(8, $offset,$action,$rank);
+        }else{
+        	$result = $this -> local_model -> getAll(8, $offset);
+        }
         $data = array(
             'locals' => $result,
             'total_rows' => $total_rows
@@ -44,7 +49,28 @@ class Local extends CI_Controller {
 			echo "true";
 		}
 	}
+	public function search(){
+        $page = $this -> input -> get('page');
+        $offset = ($page -1)*8;
+        $search = $this -> input -> get('destination');
+        $total_rows = $this -> local_model -> getSearchCount($search);
 
+        $action = $this -> input -> get('action');
+        if($action){
+        	$action = 't_local.'.$action;
+        	$rank = $this -> input -> get('rank');
+        	$result = $this -> local_model -> SearchDesOrderBy(8, $offset,$search,$action,$rank);
+        }else{
+        	$result = $this -> local_model -> SearchDes(8, $offset,$search);
+        }
+
+        $data = array(
+            'locals' => $result,
+            'total_rows' => $total_rows
+        );
+
+		echo json_encode($data);
+	}
 
 	
 

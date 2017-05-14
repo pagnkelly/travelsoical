@@ -124,22 +124,24 @@
 	<script src="js/semantic.min.js"></script>
 	<script>
 	$(function(){
-		$('.focus-other').on('click',function(){
-       		var $this = $(this);
-   			var user_id = $this.data('id');
-   			$.get('strategy/beFans',{id:user_id},function(res){
-   				if(res == 'be'){
-   					$this.html('取消关注');
-   					var fans_num = parseInt($('.fans span').html()) +1;
-   					$('.fans span').html(fans_num);
-   				}else{
-   					$this.html('关注');
-   					var fans_num = parseInt($('.fans span').html()) -1;
-   					$('.fans span').html(fans_num);
-   				}
-   			});
-       	});
-		
+		var userS = <?php if($user){echo $user -> user_id;}else{echo 'false';}?>;
+       	if(userS){
+			$('.focus-other').on('click',function(){
+	       		var $this = $(this);
+	   			var user_id = $this.data('id');
+	   			$.get('strategy/beFans',{id:user_id},function(res){
+	   				if(res == 'be'){
+	   					$this.html('取消关注');
+	   					var fans_num = parseInt($('.fans span').html()) +1;
+	   					$('.fans span').html(fans_num);
+	   				}else{
+	   					$this.html('关注');
+	   					var fans_num = parseInt($('.fans span').html()) -1;
+	   					$('.fans span').html(fans_num);
+	   				}
+	   			});
+	       	});
+		}
 	});
 	
 	</script>

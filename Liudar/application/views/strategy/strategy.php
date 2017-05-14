@@ -97,6 +97,7 @@
 	<script>
 	$(function(){
 		var cur_page = 1;
+		var userS = <?php if($user){echo $user -> user_id;}else{echo 'false';}?>;
 		function loadData(url){
 
 			$.get(url+'?page=1', function (res) {
@@ -106,21 +107,22 @@
 	           		var strategy = res.strategys[i];
                    	$('#tmpl-container').append(_.template($('#tmpl').html())(strategy));
 	           	}
-	           	$('.focus-other').each(function(){
-	           		var $this = $(this);
-	           		$this.on('click',function(){
-	           			var user_id = $this.data('id');
-	           			$.get('strategy/beFans',{id:user_id},function(res){
-	           				console.log(res);
-	           				if(res == 'be'){
-	           					$this.html('取消关注');
-	           				}else{
-	           					$this.html('关注');
-	           				}
-	           			});
-	           		});
-	           	});
-	          
+	           	if(userS){
+		           	$('.focus-other').each(function(){
+		           		var $this = $(this);
+		           		$this.on('click',function(){
+		           			var user_id = $this.data('id');
+		           			$.get('strategy/beFans',{id:user_id},function(res){
+		           				console.log(res);
+		           				if(res == 'be'){
+		           					$this.html('取消关注');
+		           				}else{
+		           					$this.html('关注');
+		           				}
+		           			});
+		           		});
+		           	});
+		        } 
 				var total_page = Math.ceil(res.total_rows/5);
 				$('#page').html('');
            		$('#page').append('<a class="icon item prev"><i class="left arrow icon"></i></a>');
@@ -143,17 +145,19 @@
 				           	}
 				           	$('.focus-other').each(function(){
 				           		var $this = $(this);
-				           		$this.on('click',function(){
-				           			var user_id = $this.data('id');
-				           			$.get('strategy/beFans',{id:user_id},function(res){
-				           				console.log(res);
-				           				if(res == 'be'){
-				           					$this.html('取消关注');
-				           				}else{
-				           					$this.html('关注');
-				           				}
-				           			});
-				           		});
+       							if(userS){
+					           		$this.on('click',function(){
+					           			var user_id = $this.data('id');
+					           			$.get('strategy/beFans',{id:user_id},function(res){
+					           				console.log(res);
+					           				if(res == 'be'){
+					           					$this.html('取消关注');
+					           				}else{
+					           					$this.html('关注');
+					           				}
+					           			});
+					           		});
+					           	}
 				           	});
 	           			},'json')
 	           		});
@@ -184,23 +188,26 @@
 
 		$('.focus-other-2').each(function(){
        		var $this = $(this);
-       		$this.on('click',function(){
-       			var user_id = $this.data('id');
-       			$.get('strategy/beFans',{id:user_id},function(res){
-       				console.log(res);
-       				if(res == 'be'){
-       					$this.find('i').addClass('red');
-       					$this.find('i').removeClass('outline');
-       					var fans_num = parseInt($this.siblings().eq(0).find('span').html()) + 1;
-       					$this.siblings().eq(0).find('span').html(fans_num);
-       				}else{
-       					$this.find('i').addClass('outline');
-       					$this.find('i').removeClass('red');
-       					var fans_num = $this.siblings().eq(0).find('span').html() - 1;
-       					$this.siblings().eq(0).find('span').html(fans_num)
-       				}
-       			});
-       		});
+       		if(userS){
+       			$this.on('click',function(){
+	       			var user_id = $this.data('id');
+	       			$.get('strategy/beFans',{id:user_id},function(res){
+	       				console.log(res);
+	       				if(res == 'be'){
+	       					$this.find('i').addClass('red');
+	       					$this.find('i').removeClass('outline');
+	       					var fans_num = parseInt($this.siblings().eq(0).find('span').html()) + 1;
+	       					$this.siblings().eq(0).find('span').html(fans_num);
+	       				}else{
+	       					$this.find('i').addClass('outline');
+	       					$this.find('i').removeClass('red');
+	       					var fans_num = $this.siblings().eq(0).find('span').html() - 1;
+	       					$this.siblings().eq(0).find('span').html(fans_num)
+	       				}
+	       			});
+	       		});
+       		}
+       		
        	});
 	});
 	
